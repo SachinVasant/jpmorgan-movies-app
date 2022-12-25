@@ -1,0 +1,22 @@
+version: "3.8"
+networks:
+  localstack-net:
+    name: localstack-net
+    driver: bridge
+
+services:
+  localstack:
+    image: localstack/localstack
+    privileged: true
+    networks:
+      - localstack-net
+    ports:
+      - "4510-4530:4510-4530"
+      - "4566:4566"
+      - "4571:4571"
+    environment:
+      - DEBUG=1
+      - DATA_DIR=/var/local/localstack/data
+      - SERVICES=sqs,s3,dynamodb
+    volumes:
+      - ./var/local/localstack:/var/local/localstack
