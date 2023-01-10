@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: movie-reader
+  name: movie-reader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movie-reader
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: movie-reader
+    spec:
+      containers:
+      - image: 218005993626.dkr.ecr.us-east-1.amazonaws.com/movie-reader:latest
+        name: movie-reader
+        resources: {}
+        ports:
+          - containerPort: 8080
+        env:
+          - name: MONGO_CONNECTION_URI
+            valueFrom:
+              secretKeyRef:
+                name: mongodb-creds
+                key: connectionString
+      imagePullSecrets:
+        - name: docker-creds
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: movie-reader
+  name: movie-reader
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: movie-reader
+  type: LoadBalancer
+status:
+  loadBalancer: {}

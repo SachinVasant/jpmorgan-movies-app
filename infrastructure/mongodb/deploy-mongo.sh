@@ -10,10 +10,12 @@ ADMIN_PASSWORD=$1
 MOVIE_APP_USER_PASSWORD=$2
 
 #helm repo add mongodb https://mongodb.github.io/helm-charts
+
+kubectl create namespace $DB_NAMESPACE --dry-run=client -o yaml | kubectl apply -f -
 helm install community-operator mongodb/community-operator --namespace $DB_NAMESPACE
 
-kubectl create secret generic mongodb-admin-secret --from-literal=password='$ADMIN_PASSWORD' --namespace=$DB_NAMESPACE
-kubectl create secret generic mongodb-movie-user-secret --from-literal=password='$MOVIE_APP_USER_PASSWORD' --namespace=$DB_NAMESPACE
+kubectl create secret generic mongodb-admin-secret --from-literal=password=$ADMIN_PASSWORD --namespace=$DB_NAMESPACE
+kubectl create secret generic mongodb-movie-user-secret --from-literal=password=$MOVIE_APP_USER_PASSWORD --namespace=$DB_NAMESPACE
 
 kubectl apply -f mongodb.yaml --namespace=$DB_NAMESPACE
 
