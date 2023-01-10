@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  connectionString: ${connection_string}
+kind: Secret
+metadata:
+  name: mongodb-creds
+  namespace: movies-app
+type: Opaque

@@ -2,31 +2,27 @@ package com.svasant.movies.repository.models;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Set;
-import java.util.UUID;
 
-@Getter
-@Setter
 @Builder
-@AllArgsConstructor
+@Data
 @Document
 public class Movie {
     @Id
-    private UUID uuid;
+    private String id;
+
+    @Indexed
     private String title;
+
+    @Indexed
     private int year;
+
+    @Indexed
     private Set<String> cast;
+
+    @Indexed
     private Set<String> genres;
-
-    public Movie() {
-        this.uuid = UUID.randomUUID();
-    }
-
-    public Movie(String title) {
-        this();
-        this.title = title;
-    }
-    
 }
