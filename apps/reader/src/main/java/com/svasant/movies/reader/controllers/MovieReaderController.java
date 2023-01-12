@@ -19,7 +19,7 @@ public class MovieReaderController {
     @Autowired
     private MovieService movieService;
 
-    @GetMapping(value = "/api/v0/movies", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "reader/api/v0/movies", produces = MediaType.APPLICATION_JSON_VALUE)
     public MoviesResponse getMovies(
             @RequestParam(required=false) String title,
             @RequestParam(required = false) String cast,
@@ -38,7 +38,7 @@ public class MovieReaderController {
         return movieService.search(movieQuery);
     }
 
-    @GetMapping(value = "/api/v0/buildMovie", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "reader/api/v0/buildMovie", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Movie> buildMovies() {
         List<Movie> moviesToSave = List.of(
                 Movie.builder()
