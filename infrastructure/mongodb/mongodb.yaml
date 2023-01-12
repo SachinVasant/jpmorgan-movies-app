@@ -3,7 +3,7 @@ kind: MongoDBCommunity
 metadata:
   name: mongodb
 spec:
-  members: 1
+  members: 3
   type: ReplicaSet
   version: "4.2.6"
   security:
@@ -28,5 +28,21 @@ spec:
         - name: readWrite
           db: movies
       scramCredentialsSecretName: movie-user-scram
+  statefulSet:
+    spec:
+       volumeClaimTemplate: 
+          - metadata:
+              name: "mongo-pvc"
+            spec:
+              accessModes:
+                - ReadWriteMany
+              resources:
+                requests:
+                  storage: 2G
+              selector:
+                matchLabels:
+                  name: "mongo-pv"
+              storageClassName: "efs-sc"  
+
   additionalMongodConfig:
     storage.wiredTiger.engineConfig.journalCompressor: zlib

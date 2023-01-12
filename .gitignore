@@ -17,3 +17,8 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 .idea
+.terraform
+**.lock.**
+**.tfstate
+**.tfstate.backup
+**/aws/**

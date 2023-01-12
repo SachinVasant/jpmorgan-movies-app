@@ -9,6 +9,16 @@ DB_NAMESPACE=mongodb
 ADMIN_PASSWORD=$1
 MOVIE_APP_USER_PASSWORD=$2
 
+eksctl create iamserviceaccount \
+  --name ebs-csi-controller-sa \
+  --namespace kube-system \
+  --cluster movies-cluster \
+  --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
+  --approve \
+  --role-only \
+  --role-name AmazonEKS_EBS_CSI_DriverRole
+
+
 #helm repo add mongodb https://mongodb.github.io/helm-charts
 
 kubectl create namespace $DB_NAMESPACE --dry-run=client -o yaml | kubectl apply -f -
