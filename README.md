@@ -2,6 +2,7 @@
 The endpoint: https://1uf7awebzk.execute-api.us-east-1.amazonaws.com/reader/api/v0/movies
 
 *Produces*: application/json
+
 *Example Output*: 
 ```
 {
