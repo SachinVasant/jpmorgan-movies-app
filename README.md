@@ -50,6 +50,7 @@ The endpoint: https://1uf7awebzk.execute-api.us-east-1.amazonaws.com/reader/api/
 
 *Example queries*:
 By title and genre: https://1uf7awebzk.execute-api.us-east-1.amazonaws.com/reader/api/v0/movies?title="Harry Potter"&genre="Fantasy"
+
 For paging: https://1uf7awebzk.execute-api.us-east-1.amazonaws.com/reader/api/v0/movies?limit=30&offset=31
 
 ## Notifications from S3
