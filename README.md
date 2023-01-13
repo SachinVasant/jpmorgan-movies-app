@@ -128,13 +128,11 @@ The apps are built using gradle and run as docker containers. I use spring-boots
 ## Architecture
 
 ![Alt text](./movies-app-architecture.svg)
-<img src="./movies-app-architecture.svg">
 
 I am sorry the diagrams aren't too neat. I used draw.io and for some reason it didn't let me move or even remove the subnet az_a part of the diagram.
 
 I have also generated a diagram using hava.io, which visualizes the actual VPC. 
 ![Alt text](./hava-movies-vpc-infrastructure-1673576239.png)
-<img src="./hava-movies-vpc-infrastructure-1673576239.png">
 
 ## Notes
 
