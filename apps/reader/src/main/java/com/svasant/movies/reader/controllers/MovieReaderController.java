@@ -38,26 +38,4 @@ public class MovieReaderController {
         return movieService.search(movieQuery);
     }
 
-    @GetMapping(value = "reader/api/v0/buildMovie", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Movie> buildMovies() {
-        List<Movie> moviesToSave = List.of(
-                Movie.builder()
-                        .title("Harry Potter")
-                        .year(2002)
-                        .cast(Set.of("Daniel Radcliffe", "Emma Watson"))
-                        .genres(Set.of("Fantasy"))
-                        .build(),
-                Movie.builder()
-                        .title("Top Gun")
-                        .year(1989)
-                        .cast(Set.of("Tom Cruise"))
-                        .genres(Set.of("Action"))
-                        .build()
-        );
-        for (Movie movie: moviesToSave) {
-            movieService.save(movie);
-        }
-        return moviesToSave;
-    }
-
 }
