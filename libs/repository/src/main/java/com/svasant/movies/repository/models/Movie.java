@@ -18,7 +18,7 @@ public class Movie {
     private String title;
 
     @Indexed
-    private int year;
+    private Integer year;
 
     @Indexed
     private Set<String> cast;

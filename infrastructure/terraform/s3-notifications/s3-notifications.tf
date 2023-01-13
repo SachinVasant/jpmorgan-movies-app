@@ -24,7 +24,7 @@ POLICY
 }
 
 resource "aws_s3_bucket" "bucket" {
-  bucket = "movies"
+  bucket = "svasant-movies-bucket"
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
