@@ -134,6 +134,12 @@ I am sorry the diagrams aren't too neat. I used draw.io and for some reason it d
 I have also generated a diagram using hava.io, which visualizes the actual VPC. 
 ![Alt text](./hava-movies-vpc-infrastructure-1673576239.png)
 
+## Data Architecture
+
+I used mongodb as the document store. Each attribute is indexed. Since we don't have a specific query pattern, I indexed each attributed individually. While querying we use the part of the query that hits the index with the highest cardinality to improve query times.
+
+A further extension would be to use an in-memory datastore, like Redis, that would make queries much faster.
+
 ## Notes
 
 I had to write most of the code in Windows unfortunately, although I build it using WSL2. If you are running this locally and notice the bash scripts failing, please open the scripts in your preferred editor and instruct it to convert the line returns from CRLF to LF.
